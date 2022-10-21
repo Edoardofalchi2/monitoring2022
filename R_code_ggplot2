@@ -1,1 +1,21 @@
+# lecture 20/10
+virus <- c(10, 30, 40, 50, 60, 80)
+death <- c(100, 240, 310, 470, 580, 690)
+#plot function to crate a graph 
+#data.frame function create a tab
+data.frame(virus,death)
+# we can assign the function with this variables to a determinate letter/name ike this(so that it's easier to use)
 
+d <- dataframe(virus,death)
+d
+# aes is important for other functions that works for 
+ggplot(d, aes(x=virus, y=death))
+# like this we didnt expalined the geometry of our points-> geom_points()
+ggplot(d, aes(x=virus, y=death)) + geom_point()
+# inside the comas of the last function we can change some details, like colorss ex:
+# remember quotes"" for colors
+ggplot(d, aes(x=virus, y=death)) + geom_point(color="coral", size=3)
+let's change something in how it looks
+ggplot(d, aes(x=virus, y=death)) + geom_line(color=coral, size=3)
+#and we can unite them, like this we get a graph with lines and points:
+ggplot(d, aes(x=virus, y=death)) + geom_point(color="coral", size=3) + geom_line(color="brown1", size=1)
