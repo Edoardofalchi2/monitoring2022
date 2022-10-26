@@ -19,3 +19,18 @@ let's change something in how it looks
 ggplot(d, aes(x=virus, y=death)) + geom_line(color=coral, size=3)
 #and we can unite them, like this we get a graph with lines and points:
 ggplot(d, aes(x=virus, y=death)) + geom_point(color="coral", size=3) + geom_line(color="brown1", size=1)
+#lecture 21/10
+# we downloaded datas and put in the lab folder, so they are outside R, let's use the function to use them, using a function (setwd()) to explain R where to find them:
+# do not open datas  with excel, it could create problems
+setwd("C:/lab/")
+#now R knows where to search, let's import the datas with the function (read.table()), but we need to be careful about arguments, let's try it without arguments, but assigned to a name in this case "covid"
+covid <- read.table("covid_agg.csv")
+#but like this R consider the first line like datas, not like header
+HEADER- can be true or false(by default it's considered FALSE), in our case it's true because first line of datas is a header so we need to explicit that is true
+covid <- read.table("covid_agg.csv", header=T)
+covid #this shows all the datas in a tab
+summary(covid) # basic stats about datas
+# now we can use ggplot
+ggplot(covid, aes(x=lon, y=lat)) + geom_point(col="brown1", size=2)
+#now we can variate the size of points based on number of cases
+ggplot(covid, aes(x=lon, y=lat, size=cases)) + geom_point(col="brown1")
